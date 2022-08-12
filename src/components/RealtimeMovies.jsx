@@ -14,6 +14,10 @@ const RealtimeMovies = () => {
       .catch((err) => console.log(err.message));
   }
 
+  function denemeFunction(id){
+    alert(id)
+  }
+
   useEffect(() => {
 
     const unsubscribe = onSnapshot(moviesCollRef, snapshot => {
@@ -29,7 +33,7 @@ const RealtimeMovies = () => {
     <div>
       <h4>Realtime Updating Movies : </h4>
       <ul>
-        {movies && movies.map(movie => (<li key={movie.id}>{movie.data.name}</li>))}
+        {movies && movies.map(movie => (<li key={movie.id}>{movie.id} ----- {movie.data.name} ---- <button onClick={() => deleteMovie(movie.id)}>Delete Movie</button> </li>))}
       </ul>
     </div>
   );
